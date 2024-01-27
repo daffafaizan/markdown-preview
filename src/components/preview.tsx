@@ -6,33 +6,39 @@ import { xonokai } from "react-syntax-highlighter/dist/esm/styles/prism";
 export default function Preview({ markdown }: { markdown: string }) {
   return (
     <div className="h-2/3 w-full md:h-screen md:w-2/3 flex flex-col items-center justify-center px-6 pt-6 pb-3 md:py-8 md:pl-8 md:pr-4">
-      <Markdown
-        className="no-scrollbar h-full w-full rounded-2xl whitespace-pre-line break-all overflow-y-auto bg-neutral-100 nm-flat-neutral-100 p-4"
-        remarkPlugins={[remarkGfm]}
-        components={{
-          code(props) {
-            const { children, className, node, ...rest } = props as any;
-            const match = /language-(\w+)/.exec(className || "");
-            return match ? (
-              <SyntaxHighlighter
-                {...rest}
-                PreTag="div"
-                className="rounded-lg"
-                language={match[1]}
-                style={xonokai}
-              >
-                {children}
-              </SyntaxHighlighter>
-            ) : (
-              <code {...rest} className={className}>
-                {children}
-              </code>
-            );
-          },
-        }}
-      >
-        {markdown}
-      </Markdown>
+      {markdown ? (
+        <Markdown
+          className="no-scrollbar h-full w-full rounded-2xl whitespace-pre-line break-all overflow-y-auto bg-neutral-100 nm-flat-neutral-100 text-gray-500 p-4"
+          remarkPlugins={[remarkGfm]}
+          components={{
+            code(props) {
+              const { children, className, node, ...rest } = props as any;
+              const match = /language-(\w+)/.exec(className || "");
+              return match ? (
+                <SyntaxHighlighter
+                  {...rest}
+                  PreTag="div"
+                  className="rounded-lg"
+                  language={match[1]}
+                  style={xonokai}
+                >
+                  {children}
+                </SyntaxHighlighter>
+              ) : (
+                <code {...rest} className={className}>
+                  {children}
+                </code>
+              );
+            },
+          }}
+        >
+          {markdown}
+        </Markdown>
+      ) : (
+        <div className="no-scrollbar h-full w-full flex flex-col items-center justify-center rounded-2xl whitespace-pre-line break-all overflow-y-auto bg-neutral-100 text-xl text-gray-400 nm-flat-neutral-100 p-4">
+          <span>No content</span>
+        </div>
+      )}
     </div>
   );
 }
