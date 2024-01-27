@@ -2,7 +2,7 @@ export default function Landing() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center text-gray-500">
-        <span className="font-semibold text-xl md:text-3xl">
+        <span className="font-semibold text-xl md:text-5xl">
           React Markdown Previewer
         </span>
         <span>

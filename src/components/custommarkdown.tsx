@@ -4,15 +4,15 @@ import { xonokai } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
 
 export default function CustomMarkdown({
-  style,
+  className,
   children,
 }: {
-  style: string;
+  className: string;
   children: string;
 }) {
   return (
     <Markdown
-      className={style}
+      className={`${className}`}
       remarkPlugins={[remarkGfm]}
       components={{
         code(props) {
