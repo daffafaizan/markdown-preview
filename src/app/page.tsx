@@ -4,6 +4,7 @@ import { useState } from "react";
 import Input from "@/components/input";
 import Preview from "@/components/preview";
 import Landing from "@/components/landing";
+import Guide from "@/components/guide";
 
 export default function Home() {
   const [title, setTitle] = useState("");
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <main>
       <Landing />
+      <Guide />
       <div className="h-screen flex flex-col md:flex-row items-center">
         <Preview markdown={markdown} />
         <Input setTitle={setTitle} setMarkdown={setMarkdown} />
