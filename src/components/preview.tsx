@@ -1,13 +1,13 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { xonokai } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function Preview({ markdown }: { markdown: string }) {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center bg-red-500 p-4">
       <Markdown
-        className="h-full w-full rounded-lg bg-purple-500 p-4"
+        className="h-full w-full rounded-lg whitespace-pre bg-purple-500 p-4"
         remarkPlugins={[remarkGfm]}
         components={{
           code(props) {
@@ -17,10 +17,11 @@ export default function Preview({ markdown }: { markdown: string }) {
               <SyntaxHighlighter
                 {...rest}
                 PreTag="div"
+                className="rounded-lg"
                 language={match[1]}
-                style={dark}
+                style={xonokai}
               >
-                {String(children).replace(/\n$/, "")}
+                {children}
               </SyntaxHighlighter>
             ) : (
               <code {...rest} className={className}>
