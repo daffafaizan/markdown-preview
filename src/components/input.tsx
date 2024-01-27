@@ -1,3 +1,10 @@
-export default function Input() {
-  return <div className="h-full w-full bg-blue-500">test</div>;
+export default function Input({ setMarkdown }: { setMarkdown: any }) {
+  return (
+    <div className="h-full w-full flex flex-col items-center justify-center bg-blue-500 p-4">
+      <textarea
+        className="h-full w-full rounded-lg p-4"
+        onChange={(e) => setMarkdown(e.currentTarget.value)}
+      />
+    </div>
+  );
 }
